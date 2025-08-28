@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Bismark Palette */
+  --color-bismark-50:  #f3f8f8;
+  --color-bismark-100: #e0ebed;
+  --color-bismark-200: #c5d8dc;
+  --color-bismark-300: #9dbcc3;
+  --color-bismark-400: #6d98a3;
+  --color-bismark-500: #527c88; /* main */
+  --color-bismark-600: #4b6d7a;
+  --color-bismark-700: #3e5660;
+  --color-bismark-800: #384a52;
+  --color-bismark-900: #323f47;
+  --color-bismark-950: #1e282e;
+
+  /* Base tokens */
+  --background: var(--color-bismark-50);
+  --foreground: var(--color-bismark-950);
+  --card: var(--color-bismark-100);
+  --card-foreground: var(--color-bismark-900);
+
+  --primary: var(--color-bismark-500);
+  --primary-foreground: white;
+
+  --secondary: var(--color-bismark-100);
+  --secondary-foreground: var(--color-bismark-900);
+
+  --accent: var(--color-bismark-200);
+  --accent-foreground: var(--color-bismark-900);
+
+  --muted: var(--color-bismark-100);
+  --muted-foreground: var(--color-bismark-700);
+
+  --border: var(--color-bismark-200);
+  --input: white;
+  --ring: var(--color-bismark-500);
+
+  --radius: 0.5rem;
+
+  --font-heading: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark {
+  --background: var(--color-bismark-950);
+  --foreground: var(--color-bismark-50);
+  --card: var(--color-bismark-900);
+  --card-foreground: var(--color-bismark-50);
+
+  --primary: var(--color-bismark-400);
+  --primary-foreground: var(--color-bismark-950);
+
+  --secondary: var(--color-bismark-800);
+  --secondary-foreground: var(--color-bismark-50);
+
+  --accent: var(--color-bismark-700);
+  --accent-foreground: var(--color-bismark-50);
+
+  --muted: var(--color-bismark-800);
+  --muted-foreground: var(--color-bismark-200);
+
+  --border: var(--color-bismark-700);
+  --input: var(--color-bismark-800);
+  --ring: var(--color-bismark-400);
+}
+
+@theme inline {
+  /* Map Bismark palette into Tailwind */
+  --color-bismark-50:  var(--color-bismark-50);
+  --color-bismark-100: var(--color-bismark-100);
+  --color-bismark-200: var(--color-bismark-200);
+  --color-bismark-300: var(--color-bismark-300);
+  --color-bismark-400: var(--color-bismark-400);
+  --color-bismark-500: var(--color-bismark-500);
+  --color-bismark-600: var(--color-bismark-600);
+  --color-bismark-700: var(--color-bismark-700);
+  --color-bismark-800: var(--color-bismark-800);
+  --color-bismark-900: var(--color-bismark-900);
+  --color-bismark-950: var(--color-bismark-950);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-md: var(--radius);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+}

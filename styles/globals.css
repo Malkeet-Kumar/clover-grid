@@ -1,0 +1,10 @@
+
+/* Shiraz theme */
+html.shiraz {
+  @import "./shiraz-theme.css";
+}
+
+/* Bismark theme */
+html.bismark {
+  @import "./bismark-theme.css";
+}

@@ -1,0 +1,209 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Enhanced Primary Green Palette - Better contrast ratios */
+  --color-primary-50: #f0fdf4;   /* Lighter, cleaner white-green */
+  --color-primary-100: #dcfce7;  /* Softer light green */
+  --color-primary-200: #bbf7d0;  /* Balanced light green */
+  --color-primary-300: #86efac;  /* Vibrant medium light */
+  --color-primary-400: #4ade80;  /* Bright accent green */
+  --color-primary-500: #22c55e;  /* Main brand green - higher contrast */
+  --color-primary-600: #16a34a;  /* Rich medium green */
+  --color-primary-700: #15803d;  /* Deep green - better readability */
+  --color-primary-800: #166534;  /* Dark forest green */
+  --color-primary-900: #14532d;  /* Very dark green */
+  --color-primary-950: #052e16;  /* Almost black green */
+  
+  /* Complementary Secondary Colors - Based on your emblem's dark gray */
+  --color-secondary-50: #f8fafc;   /* Light neutral */
+  --color-secondary-100: #f1f5f9;  /* Soft gray */
+  --color-secondary-200: #e2e8f0;  /* Light gray */
+  --color-secondary-300: #cbd5e1;  /* Medium light gray */
+  --color-secondary-400: #94a3b8;  /* Medium gray */
+  --color-secondary-500: #64748b;  /* Balanced gray - matches emblem */
+  --color-secondary-600: #475569;  /* Dark gray */
+  --color-secondary-700: #334155;  /* Darker gray */
+  --color-secondary-800: #1e293b;  /* Very dark blue-gray */
+  --color-secondary-900: #0f172a;  /* Almost black */
+  
+  /* Accent Colors - Warmer greens inspired by your emblem's gradient */
+  --color-accent-emerald: #10b981; /* Emerald accent */
+  --color-accent-teal: #14b8a6;    /* Teal variation */
+  --color-accent-lime: #65a30d;    /* Lime accent for highlights */
+  
+  /* Utility Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+  
+  /* Light Theme Semantic Tokens */
+  --background: #ffffff;                    /* Pure white for maximum contrast */
+  --foreground: var(--color-primary-900);  /* Very dark green for text */
+  --card: var(--color-primary-50);         /* Subtle green tint */
+  --card-foreground: var(--color-primary-900);
+  --primary: var(--color-primary-500);     /* Main brand color */
+  --primary-foreground: #ffffff;          /* White text on primary */
+  --secondary: var(--color-secondary-600); /* Dark gray for secondary elements */
+  --secondary-foreground: #ffffff;
+  --accent: var(--color-accent-emerald);
+  --accent-foreground: #ffffff;
+  --muted: var(--color-secondary-100);     /* Light gray for muted backgrounds */
+  --muted-foreground: var(--color-secondary-700);
+  --border: var(--color-secondary-200);    /* Subtle borders */
+  --input: #ffffff;
+  --ring: var(--color-primary-500);        /* Focus rings in brand color */
+  
+  /* Design System Variables */
+  --radius: 0.5rem;
+  --font-heading: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark {
+  /* Dark Theme - High contrast while maintaining brand identity */
+  --background: var(--color-primary-950);     /* Very dark green background */
+  --foreground: var(--color-primary-50);      /* Light green text */
+  --card: var(--color-primary-900);           /* Dark green cards */
+  --card-foreground: var(--color-primary-100);
+  --primary: var(--color-primary-400);        /* Brighter green for dark theme */
+  --primary-foreground: var(--color-primary-950);
+  --secondary: var(--color-secondary-700);    /* Medium dark gray */
+  --secondary-foreground: var(--color-primary-100);
+  --accent: var(--color-accent-emerald);
+  --accent-foreground: var(--color-primary-50);
+  --muted: var(--color-primary-900);          /* Dark muted backgrounds */
+  --muted-foreground: var(--color-primary-300);
+  --border: var(--color-primary-800);         /* Subtle dark borders */
+  --input: var(--color-primary-900);
+  --ring: var(--color-primary-400);
+}
+
+@theme inline {
+  /* Primary Brand Colors */
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-950: var(--color-primary-950);
+  
+  /* Secondary Colors */
+  --color-secondary-50: var(--color-secondary-50);
+  --color-secondary-100: var(--color-secondary-100);
+  --color-secondary-200: var(--color-secondary-200);
+  --color-secondary-300: var(--color-secondary-300);
+  --color-secondary-400: var(--color-secondary-400);
+  --color-secondary-500: var(--color-secondary-500);
+  --color-secondary-600: var(--color-secondary-600);
+  --color-secondary-700: var(--color-secondary-700);
+  --color-secondary-800: var(--color-secondary-800);
+  --color-secondary-900: var(--color-secondary-900);
+  
+  /* Accent Colors */
+  --color-accent-emerald: var(--color-accent-emerald);
+  --color-accent-teal: var(--color-accent-teal);
+  --color-accent-lime: var(--color-accent-lime);
+  
+  /* Semantic Color Tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  
+  /* Utility Colors */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
+  
+  /* Design Tokens */
+  --radius-sm: 0.25rem;
+  --radius-md: var(--radius);
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    @apply text-foreground;
+  }
+  
+  /* Ensure proper contrast for interactive elements */
+  button, .btn {
+    @apply font-medium transition-colors duration-200;
+  }
+  
+  /* Enhanced focus states for accessibility */
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+/* Utility classes for the improved color system */
+@layer utilities {
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-secondary {
+    color: var(--color-secondary);
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+  
+  .accent-emerald {
+    color: var(--color-accent-emerald);
+  }
+  
+  .accent-teal {
+    color: var(--color-accent-teal);
+  }
+  
+  .accent-lime {
+    color: var(--color-accent-lime);
+  }
+}

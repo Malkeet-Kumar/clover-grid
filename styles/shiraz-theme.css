@@ -1,0 +1,117 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Shiraz Palette */
+  --color-shiraz-50:  #fff1f1;
+  --color-shiraz-100: #ffe3e3;
+  --color-shiraz-200: #ffcccf;
+  --color-shiraz-300: #ffa2a8;
+  --color-shiraz-400: #ff6d7a;
+  --color-shiraz-500: #f93a50; /* main */
+  --color-shiraz-600: #e61839;
+  --color-shiraz-700: #c20e30;
+  --color-shiraz-800: #9f0e2e;
+  --color-shiraz-900: #8b102f;
+  --color-shiraz-950: #4e0314;
+
+  /* Base tokens */
+  --background: var(--color-shiraz-50);
+  --foreground: var(--color-shiraz-950);
+  --card: var(--color-shiraz-100);
+  --card-foreground: var(--color-shiraz-900);
+
+  --primary: var(--color-shiraz-500);
+  --primary-foreground: white;
+
+  --secondary: var(--color-shiraz-100);
+  --secondary-foreground: var(--color-shiraz-900);
+
+  --accent: var(--color-shiraz-200);
+  --accent-foreground: var(--color-shiraz-900);
+
+  --muted: var(--color-shiraz-100);
+  --muted-foreground: var(--color-shiraz-700);
+
+  --border: var(--color-shiraz-200);
+  --input: white;
+  --ring: var(--color-shiraz-500);
+
+  --radius: 0.5rem;
+
+  --font-heading: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+.dark {
+  --background: var(--color-shiraz-950);
+  --foreground: var(--color-shiraz-50);
+  --card: var(--color-shiraz-900);
+  --card-foreground: var(--color-shiraz-50);
+
+  --primary: var(--color-shiraz-400);
+  --primary-foreground: var(--color-shiraz-950);
+
+  --secondary: var(--color-shiraz-800);
+  --secondary-foreground: var(--color-shiraz-50);
+
+  --accent: var(--color-shiraz-700);
+  --accent-foreground: var(--color-shiraz-50);
+
+  --muted: var(--color-shiraz-800);
+  --muted-foreground: var(--color-shiraz-200);
+
+  --border: var(--color-shiraz-700);
+  --input: var(--color-shiraz-800);
+  --ring: var(--color-shiraz-400);
+}
+
+@theme inline {
+  /* Map Shiraz palette into Tailwind */
+  --color-shiraz-50:  var(--color-shiraz-50);
+  --color-shiraz-100: var(--color-shiraz-100);
+  --color-shiraz-200: var(--color-shiraz-200);
+  --color-shiraz-300: var(--color-shiraz-300);
+  --color-shiraz-400: var(--color-shiraz-400);
+  --color-shiraz-500: var(--color-shiraz-500);
+  --color-shiraz-600: var(--color-shiraz-600);
+  --color-shiraz-700: var(--color-shiraz-700);
+  --color-shiraz-800: var(--color-shiraz-800);
+  --color-shiraz-900: var(--color-shiraz-900);
+  --color-shiraz-950: var(--color-shiraz-950);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-md: var(--radius);
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+}
