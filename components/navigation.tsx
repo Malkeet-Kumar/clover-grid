@@ -38,7 +38,7 @@ export function Navigation() {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
         isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border shadow-sm"
+          ? "bg-background/50 backdrop-blur-md border-b border-border shadow-sm"
           : "bg-transparent"
       )}
     >
@@ -52,9 +52,7 @@ export function Navigation() {
                 alt="logo"
               />
             </div>
-            <span className="font-heading font-bold text-xl text-accent-foreground">
-              CloverGrid
-            </span>
+            <span className="font-heading font-bold text-xl">CloverGrid</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -77,7 +75,7 @@ export function Navigation() {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -86,7 +84,7 @@ export function Navigation() {
               <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               <span className="sr-only">Toggle theme</span>
-            </Button>
+            </Button> */}
             <Button asChild>
               <Link href="/quote">Get Quote</Link>
             </Button>

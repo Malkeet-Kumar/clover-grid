@@ -9,6 +9,7 @@ import {
   Award,
   Users,
   TrendingUp,
+  LightbulbIcon,
 } from "lucide-react";
 import { getServices, getPortfolio } from "@/lib/api";
 import {
@@ -45,8 +46,6 @@ export default async function HomePage() {
     <PageTransition>
       <div className="min-h-screen bg-background">
         <Navigation />
-
-        {/* Hero Section - Enhanced with better gradients and spacing */}
         <section className="relative pt-20 pb-24 lg:pt-32 lg:pb-32 overflow-hidden">
           {/* Enhanced background with multiple layers */}
           <div className="absolute inset-0">
@@ -61,7 +60,7 @@ export default async function HomePage() {
               <div className="mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-200 bg-primary-50 text-primary-700 text-sm font-medium">
                   <Star className="h-4 w-4" />
-                  Trusted by 200+ Businesses
+                  Trusted by Industry Leaders
                 </span>
               </div>
 
@@ -103,19 +102,16 @@ export default async function HomePage() {
               {/* Trust indicators */}
               <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
                 {[
-                  { icon: Users, value: "200+", label: "Happy Clients" },
-                  { icon: Award, value: "5+", label: "Years Experience" },
-                  { icon: TrendingUp, value: "95%", label: "Success Rate" },
-                  { icon: Star, value: "4.9", label: "Client Rating" },
+                  { icon: Users, label: "Trusted by growing teams" },
+                  { icon: Award, label: "Built with passion & expertise" },
+                  { icon: TrendingUp, label: "Focused on meaningful results" },
+                  { icon: Star, label: "Loved by our clients" },
                 ].map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-primary-100 flex items-center justify-center">
                       <stat.icon className="h-6 w-6 text-primary-600" />
                     </div>
-                    <div className="text-2xl font-bold text-foreground mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-secondary-600">
+                    <div className="text-sm font-medium text-foreground">
                       {stat.label}
                     </div>
                   </div>
@@ -149,11 +145,9 @@ export default async function HomePage() {
                   iconMap[service.icon as keyof typeof iconMap] || Code;
                 return (
                   <StaggerItem key={service.id}>
-                    <AnimatedCard delay={index * 0.1}>
+                    <AnimatedCard delay={index * 0.3}>
                       <div className="group relative bg-white border border-secondary-200 hover:border-primary-300 rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 hover:-translate-y-1">
-                        {/* Gradient overlay on hover */}
                         <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-accent-emerald/0 group-hover:from-primary-50/50 group-hover:to-accent-emerald/20 rounded-2xl transition-all duration-300" />
-
                         <div className="relative z-10">
                           <div className="w-16 h-16 bg-primary-100 group-hover:bg-primary-200 rounded-2xl flex items-center justify-center mx-auto mb-6 transition-colors duration-300">
                             <IconComponent className="h-8 w-8 text-primary-600 group-hover:text-primary-700" />
@@ -165,7 +159,9 @@ export default async function HomePage() {
                             {service.description}
                           </p>
                           <div className="text-primary-600 font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Learn More →
+                            <Link href={"/blogs?tech=" + service.title}>
+                              Learn More →
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -219,7 +215,7 @@ export default async function HomePage() {
                           <img
                             src={project.imageUrl || "/placeholder.svg"}
                             alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
@@ -249,7 +245,10 @@ export default async function HomePage() {
                               </span>
                             ))}
                             {project.techStack.length > 3 && (
-                              <span className="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full font-medium">
+                              <span
+                                className="px-3 py-1 bg-secondary-100 text-secondary-700 text-sm rounded-full font-medium cursor-pointer group-hover:bg-secondary-200"
+                                title={project.techStack.slice(3).join(", ")}
+                              >
                                 +{project.techStack.length - 3} more
                               </span>
                             )}
@@ -413,6 +412,129 @@ export default async function HomePage() {
           </div>
         </section>
 
+        <section className="py-24 bg-gradient-to-br from-secondary-50 via-primary-50/30 to-accent-emerald/10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <div className="mb-6">
+                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
+                    Why Choose Us
+                  </span>
+                </div>
+
+                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-8">
+                  Your Success Is Our{" "}
+                  <span className="text-primary">Top Priority</span>
+                </h2>
+
+                <p className="text-xl text-secondary-600 mb-10 leading-relaxed">
+                  We combine technical expertise with business insight to create
+                  solutions that help your business thrive. Our approach is
+                  centered on delivering measurable impact and long-term growth.
+                </p>
+
+                <StaggerContainer className="space-y-6">
+                  {[
+                    {
+                      text: "Experienced and collaborative team",
+                      desc: "Our developers and strategists bring practical know-how to every project",
+                    },
+                    {
+                      text: "Innovative technologies and best practices",
+                      desc: "We leverage modern tools and methodologies to build efficient, scalable solutions",
+                    },
+                    {
+                      text: "Agile and transparent workflows",
+                      desc: "Frequent updates and close collaboration ensure projects meet your goals",
+                    },
+                    {
+                      text: "Reliable support and guidance",
+                      desc: "We stay by your side to help with any challenges during and after delivery",
+                    },
+                    {
+                      text: "Proven approach to delivering results",
+                      desc: "We focus on quality, performance, and customer satisfaction throughout the process",
+                    },
+                  ].map((item, index) => (
+                    <StaggerItem key={index}>
+                      <div className="flex items-start space-x-4 p-4 rounded-xl hover:bg-white/60 transition-colors duration-300">
+                        <div className="flex-shrink-0 w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center mt-1">
+                          <CheckCircle className="h-4 w-4 text-white" />
+                        </div>
+                        <div>
+                          <div className="text-foreground font-semibold text-lg mb-1">
+                            {item.text}
+                          </div>
+                          <div className="text-secondary-600 text-sm">
+                            {item.desc}
+                          </div>
+                        </div>
+                      </div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+
+                <div className="mt-12">
+                  <AnimatedButton
+                    size="lg"
+                    asChild
+                    className="bg-primary hover:bg-primary-600 shadow-lg shadow-primary-500/25"
+                  >
+                    <Link href="/about">
+                      Learn More About Us
+                      <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </AnimatedButton>
+                </div>
+              </div>
+
+              <AnimatedCard direction="right" delay={0.3}>
+                <div className="relative">
+                  {/* Stats cards */}
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
+                      <div className="text-4xl font-bold text-primary-600 mb-2">
+                        Trusted
+                      </div>
+                      <div className="text-secondary-600 font-medium">
+                        By growing businesses
+                      </div>
+                    </div>
+                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
+                      <div className="text-4xl font-bold text-accent-emerald mb-2">
+                        High Quality
+                      </div>
+                      <div className="text-secondary-600 font-medium">
+                        Solutions and service
+                      </div>
+                    </div>
+                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
+                      <div className="text-4xl font-bold text-accent-teal mb-2">
+                        Always Available
+                      </div>
+                      <div className="text-secondary-600 font-medium">
+                        Support when you need it
+                      </div>
+                    </div>
+                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
+                      <div className="text-4xl font-bold text-accent-lime mb-2">
+                        Experienced
+                      </div>
+                      <div className="text-secondary-600 font-medium">
+                        Team delivering results
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Decorative elements */}
+                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary-200/30 rounded-full -z-10"></div>
+                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-emerald/20 rounded-full -z-10"></div>
+                </div>
+              </AnimatedCard>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section - Enhanced with better contrast and visual appeal */}
         <section className="py-24 bg-gradient-to-br from-primary-600 to-accent-emerald relative overflow-hidden">
           {/* Background pattern */}
@@ -441,16 +563,19 @@ export default async function HomePage() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="text-lg px-10 py-4 border-2 border-white/30 hover:border-white text-white hover:bg-white hover:text-primary-600 transition-all duration-300"
+                  className="text-lg px-10 py-4 border-2 border-white/30  hover:text-primary-600 text-primary-foreground hover:text-white transition-all duration-300"
                 >
                   <Link href="/quote">Get Free Quote</Link>
                 </AnimatedButton>
               </div>
 
-              <div className="mt-12 text-primary-100 text-sm">
+              <div className="mt-12 text-primary-100 text-sm flex flex-row items-center justify-center gap-4">
                 <span>
-                  💡 Free consultation • No commitment required • Response
-                  within 24 hours
+                  <LightbulbIcon />
+                </span>
+                <span>
+                  Free consultation • No commitment required • Response within
+                  24 hours
                 </span>
               </div>
             </div>

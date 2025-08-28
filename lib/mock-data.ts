@@ -1,4 +1,11 @@
-import type { Service, Portfolio, BlogPost, JobPost, PricePlan, Page } from "./types"
+import type {
+  Service,
+  Portfolio,
+  BlogPost,
+  JobPost,
+  PricePlan,
+  Page,
+} from "./types";
 
 export const mockPages: Page[] = [
   {
@@ -18,22 +25,30 @@ export const mockPages: Page[] = [
     id: "2",
     name: "About",
     title: "About TechFlow Solutions",
-    content: "We are a team of passionate developers and designers committed to delivering exceptional IT solutions.",
+    content:
+      "We are a team of passionate developers and designers committed to delivering exceptional IT solutions.",
     slug: "about",
-    metaDescription: "Learn about TechFlow Solutions - our mission, vision, and expert team.",
+    metaDescription:
+      "Learn about TechFlow Solutions - our mission, vision, and expert team.",
     published: true,
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
-]
+];
 
 export const mockServices: Service[] = [
   {
     id: "1",
     title: "Web Development",
-    description: "Modern, responsive websites built with React, Next.js, and cutting-edge technologies.",
+    description:
+      "Modern, responsive web applications built cutting-edge technologies.",
     icon: "Code",
-    features: ["Responsive Design", "SEO Optimization", "Performance Optimization", "Modern Frameworks"],
+    features: [
+      "Responsive Design",
+      "SEO Optimization",
+      "Performance Optimization",
+      "Modern Frameworks",
+    ],
     technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     pricing: { starting: 2500, currency: "USD" },
     category: "web",
@@ -43,10 +58,16 @@ export const mockServices: Service[] = [
   },
   {
     id: "2",
-    title: "Mobile App Development",
-    description: "Native and cross-platform mobile applications for iOS and Android.",
+    title: "App Development",
+    description:
+      "Native and cross-platform mobile applications for iOS and Android.",
     icon: "Smartphone",
-    features: ["Cross-platform", "Native Performance", "App Store Optimization", "Push Notifications"],
+    features: [
+      "Cross-platform",
+      "Native Performance",
+      "App Store Optimization",
+      "Push Notifications",
+    ],
     technologies: ["React Native", "Flutter", "Swift", "Kotlin"],
     pricing: { starting: 5000, currency: "USD" },
     category: "mobile",
@@ -57,9 +78,15 @@ export const mockServices: Service[] = [
   {
     id: "3",
     title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and DevOps solutions on AWS and other platforms.",
+    description:
+      "Scalable cloud infrastructure and DevOps solutions on AWS and other platforms.",
     icon: "Cloud",
-    features: ["Auto Scaling", "Load Balancing", "CI/CD Pipelines", "Monitoring"],
+    features: [
+      "Auto Scaling",
+      "Load Balancing",
+      "CI/CD Pipelines",
+      "Monitoring",
+    ],
     technologies: ["AWS", "Docker", "Kubernetes", "Terraform"],
     pricing: { starting: 3000, currency: "USD" },
     category: "cloud",
@@ -70,9 +97,15 @@ export const mockServices: Service[] = [
   {
     id: "4",
     title: "AI & Automation",
-    description: "Intelligent chatbots, AI integrations, and business process automation.",
+    description:
+      "Intelligent chatbots, AI integrations, and business process automation.",
     icon: "Bot",
-    features: ["Natural Language Processing", "Machine Learning", "Process Automation", "Data Analytics"],
+    features: [
+      "Natural Language Processing",
+      "Machine Learning",
+      "Process Automation",
+      "Data Analytics",
+    ],
     technologies: ["Python", "TensorFlow", "OpenAI", "LangChain"],
     pricing: { starting: 4000, currency: "USD" },
     category: "ai",
@@ -80,30 +113,37 @@ export const mockServices: Service[] = [
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
-]
+];
 
 export const mockPortfolio: Portfolio[] = [
   {
     id: "1",
-    title: "E-commerce Platform",
-    description: "Modern e-commerce solution with advanced features",
+    title: "SDL Logistics Management System",
+    description: "End-to-end logistics management solution",
     longDescription:
-      "A comprehensive e-commerce platform built with Next.js and Stripe integration, featuring real-time inventory management, advanced search, and mobile-first design.",
-    techStack: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS"],
-    imageUrl: "/placeholder.svg?height=400&width=600",
-    projectUrl: "https://example-ecommerce.com",
-    category: "ecommerce",
-    client: "RetailCorp",
-    duration: "4 months",
+      "SDL is a comprehensive logistics management system designed to streamline parcel tracking, driver assignments, route optimization, and real-time delivery updates. Built for efficiency, transparency, and scalability, it supports multi-tenant operations and integrates seamlessly with mobile apps for drivers and customers.",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Socket.IO",
+    ],
+    imageUrl: "/sdl-report.jpg",
+    projectUrl: "https://safedispatchlogistics.com",
+    category: "web",
+    client: "SDL Operations",
+    duration: "6 months",
     results: [
-      { metric: "Conversion Rate", value: "+45%" },
-      { metric: "Page Load Speed", value: "2.1s" },
-      { metric: "Mobile Traffic", value: "+60%" },
+      { metric: "Delivery Tracking Accuracy", value: "99.8%" },
+      { metric: "Route Optimization Efficiency", value: "+35%" },
+      { metric: "Customer Satisfaction", value: "+50%" },
     ],
     featured: true,
     published: true,
-    createdAt: "2024-01-01T00:00:00Z",
-    updatedAt: "2024-01-01T00:00:00Z",
+    createdAt: "2025-01-01T00:00:00Z",
+    updatedAt: "2025-01-01T00:00:00Z",
   },
   {
     id: "2",
@@ -126,14 +166,15 @@ export const mockPortfolio: Portfolio[] = [
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
-]
+];
 
 export const mockBlogPosts: BlogPost[] = [
   {
     id: "1",
     title: "The Future of Web Development in 2024",
     slug: "future-web-development-2024",
-    excerpt: "Explore the latest trends and technologies shaping the future of web development.",
+    excerpt:
+      "Explore the latest trends and technologies shaping the future of web development.",
     content:
       "Web development continues to evolve at a rapid pace. In 2024, we're seeing exciting developments in AI integration, serverless architectures, and progressive web apps...",
     imageUrl: "/placeholder.svg?height=300&width=500",
@@ -155,7 +196,8 @@ export const mockBlogPosts: BlogPost[] = [
     id: "2",
     title: "Building Scalable Mobile Apps with React Native",
     slug: "scalable-mobile-apps-react-native",
-    excerpt: "Learn best practices for building performant and scalable mobile applications.",
+    excerpt:
+      "Learn best practices for building performant and scalable mobile applications.",
     content:
       "React Native has become a popular choice for cross-platform mobile development. Here are the key strategies for building scalable applications...",
     imageUrl: "/placeholder.svg?height=300&width=500",
@@ -173,7 +215,7 @@ export const mockBlogPosts: BlogPost[] = [
     createdAt: "2024-01-10T00:00:00Z",
     updatedAt: "2024-01-10T00:00:00Z",
   },
-]
+];
 
 export const mockJobPosts: JobPost[] = [
   {
@@ -199,7 +241,13 @@ export const mockJobPosts: JobPost[] = [
     skills: ["React", "Node.js", "TypeScript", "AWS", "PostgreSQL"],
     experience: "5+ years",
     salary: { min: 120000, max: 180000, currency: "USD" },
-    benefits: ["Health Insurance", "Dental & Vision", "401k Matching", "Flexible PTO", "Remote Work"],
+    benefits: [
+      "Health Insurance",
+      "Dental & Vision",
+      "401k Matching",
+      "Flexible PTO",
+      "Remote Work",
+    ],
     applyUrl: "/careers/apply/1",
     published: true,
     featured: true,
@@ -212,7 +260,8 @@ export const mockJobPosts: JobPost[] = [
     department: "Design",
     location: "New York / Remote",
     type: "full-time",
-    description: "Join our design team to create beautiful and intuitive user experiences for our clients.",
+    description:
+      "Join our design team to create beautiful and intuitive user experiences for our clients.",
     requirements: [
       "3+ years of UI/UX design experience",
       "Proficiency in Figma and Adobe Creative Suite",
@@ -228,14 +277,19 @@ export const mockJobPosts: JobPost[] = [
     skills: ["Figma", "Adobe Creative Suite", "Prototyping", "User Research"],
     experience: "3+ years",
     salary: { min: 90000, max: 130000, currency: "USD" },
-    benefits: ["Health Insurance", "Dental & Vision", "401k Matching", "Professional Development Budget"],
+    benefits: [
+      "Health Insurance",
+      "Dental & Vision",
+      "401k Matching",
+      "Professional Development Budget",
+    ],
     applyUrl: "/careers/apply/2",
     published: true,
     featured: false,
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
-]
+];
 
 export const mockPricePlans: PricePlan[] = [
   {
@@ -310,4 +364,4 @@ export const mockPricePlans: PricePlan[] = [
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
-]
+];
