@@ -1,59 +1,88 @@
-import { NextResponse } from "next/server"
-import { mockJobPosts } from "@/lib/mock-data"
-import type { ApiResponse, JobPost } from "@/lib/types"
+import { NextRequest, NextResponse } from "next/server";
+import { JobPostModel } from "@/models/JobPost";
+import { paginate } from "@/lib/generic-api";
+import { connectDB } from "@/lib/db";
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
-  const department = searchParams.get("department")
-  const type = searchParams.get("type")
-  const featured = searchParams.get("featured")
+export async function GET(req: NextRequest) {
+  try {
+    await connectDB();
+    const { searchParams } = new URL(req.url);
 
-  let filteredJobs = mockJobPosts.filter((job) => job.published)
+    const published = searchParams.get("published");
+    const featured = searchParams.get("featured");
+    const all = searchParams.get("all");
+    const page = Number(searchParams.get("page") || 1);
+    const limit = Number(searchParams.get("limit") || 10);
 
-  if (department) {
-    filteredJobs = filteredJobs.filter((job) => job.department.toLowerCase() === department.toLowerCase())
+    let query: Record<string, any> = {};
+
+    if (all !== "true") {
+      if (published !== null) query.published = published === "true";
+      if (featured !== null) query.featured = featured === "true";
+    }
+
+    const result = await paginate(JobPostModel, query, {
+      page,
+      limit,
+      sort: { createdAt: -1 },
+    });
+
+    return NextResponse.json(result);
+  } catch (err: any) {
+    return NextResponse.json(
+      { success: false, message: err.message || "Failed to fetch jobs" },
+      { status: 500 }
+    );
   }
-
-  if (type) {
-    filteredJobs = filteredJobs.filter((job) => job.type === type)
-  }
-
-  if (featured !== null) {
-    const isFeatured = featured === "true"
-    filteredJobs = filteredJobs.filter((job) => job.featured === isFeatured)
-  }
-
-  const response: ApiResponse<JobPost[]> = {
-    data: filteredJobs,
-    success: true,
-    message: "Job posts retrieved successfully",
-  }
-
-  return NextResponse.json(response)
 }
 
-export async function POST(request: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.json()
+    await connectDB();
+    const { _id, ...body } = await req.json();
+    const job = await JobPostModel.create(body);
 
-    // In a real application, you would save to database
-    const newJob: JobPost = {
-      id: Date.now().toString(),
-      ...body,
-      published: false,
-      featured: false,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    }
+    return NextResponse.json({ success: true, data: job }, { status: 201 });
+  } catch (err: any) {
+    return NextResponse.json(
+      { success: false, message: err.message },
+      { status: 500 }
+    );
+  }
+}
 
-    const response: ApiResponse<JobPost> = {
-      data: newJob,
-      success: true,
-      message: "Job post created successfully",
-    }
+export async function PUT(req: NextRequest) {
+  try {
+    await connectDB();
+    const { _id, ...body } = await req.json();
+    const job = await JobPostModel.updateOne({ _id }, { ...body });
 
-    return NextResponse.json(response, { status: 201 })
-  } catch (error) {
-    return NextResponse.json({ success: false, message: "Failed to create job post" }, { status: 500 })
+    return NextResponse.json(
+      { success: job.modifiedCount > 0, data: job.modifiedCount },
+      { status: 200 }
+    );
+  } catch (err: any) {
+    return NextResponse.json(
+      { success: false, message: err.message },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    await connectDB();
+    const { _id } = await req.json();
+    const job = await JobPostModel.deleteOne({ _id });
+
+    return NextResponse.json(
+      { success: job.deletedCount > 0, data: job.deletedCount },
+      { status: 200 }
+    );
+  } catch (err: any) {
+    return NextResponse.json(
+      { success: false, message: err.message },
+      { status: 500 }
+    );
   }
 }

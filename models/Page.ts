@@ -12,7 +12,7 @@ export interface Page extends Document {
   updatedAt: string;
 }
 
-const PageSchema = new Schema<Page>(
+const PageSchema: Schema<Page> = new Schema(
   {
     id: { type: String, required: true, unique: true },
     name: { type: String, required: true },

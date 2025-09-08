@@ -1,12 +1,21 @@
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Input } from "@/components/ui/input"
-import Link from "next/link"
-import { Search, Calendar, User, ArrowRight, TrendingUp, Code, Smartphone, Cloud } from "lucide-react"
-import { getBlogPosts } from "@/lib/api"
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import {
+  Search,
+  Calendar,
+  User,
+  ArrowRight,
+  TrendingUp,
+  Code,
+  Smartphone,
+  Cloud,
+} from "lucide-react";
+import { getBlogPosts } from "@/lib/api";
 
 const categoryIcons = {
   "Web Development": Code,
@@ -16,20 +25,17 @@ const categoryIcons = {
   "SaaS Development": Code,
   Technology: TrendingUp,
   Mobile: Smartphone,
-}
+};
 
 export default async function BlogPage() {
-  const { posts: allPosts } = await getBlogPosts()
-  const featuredPosts = allPosts.filter((post) => post.featured)
-  const recentPosts = allPosts.filter((post) => !post.featured)
+  const { posts: allPosts } = await getBlogPosts();
+  const featuredPosts = allPosts.filter((post) => post.featured);
+  const recentPosts = allPosts.filter((post) => !post.featured);
 
-  const categoryCount = allPosts.reduce(
-    (acc, post) => {
-      acc[post.category] = (acc[post.category] || 0) + 1
-      return acc
-    },
-    {} as Record<string, number>,
-  )
+  const categoryCount = allPosts.reduce((acc, post) => {
+    acc[post.category] = (acc[post.category] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>);
 
   const categories = [
     { name: "All", count: allPosts.length, icon: TrendingUp },
@@ -38,10 +44,10 @@ export default async function BlogPage() {
       count,
       icon: categoryIcons[name as keyof typeof categoryIcons] || TrendingUp,
     })),
-  ]
+  ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navigation />
 
       {/* Hero Section */}
@@ -52,12 +58,17 @@ export default async function BlogPage() {
               Tech Insights & Industry Trends
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Stay ahead of the curve with expert insights, development tutorials, and industry analysis from our team
-              of technology professionals.
+              Stay ahead of the curve with expert insights, development
+              tutorials, and industry analysis from our team of technology
+              professionals.
             </p>
             <div className="relative max-w-md mx-auto">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-              <Input type="search" placeholder="Search articles..." className="pl-10" />
+              <Input
+                type="search"
+                placeholder="Search articles..."
+                className="pl-10"
+              />
             </div>
           </div>
         </div>
@@ -68,13 +79,20 @@ export default async function BlogPage() {
         <section className="py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">Featured Articles</h2>
-              <p className="text-xl text-muted-foreground">Our most popular and impactful content</p>
+              <h2 className="font-heading text-3xl lg:text-4xl font-bold text-foreground mb-4">
+                Featured Articles
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Our most popular and impactful content
+              </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {featuredPosts.map((post) => (
-                <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 border-border">
+                <Card
+                  key={post.id}
+                  className="group hover:shadow-xl transition-all duration-300 border-border"
+                >
                   <div className="aspect-[16/10] relative overflow-hidden rounded-t-lg">
                     <img
                       src={post.imageUrl || "/placeholder.svg"}
@@ -86,14 +104,18 @@ export default async function BlogPage() {
                       <Badge variant="secondary">{post.category}</Badge>
                     </div>
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-primary text-primary-foreground">Featured</Badge>
+                      <Badge className="bg-primary text-primary-foreground">
+                        Featured
+                      </Badge>
                     </div>
                   </div>
                   <CardHeader className="pb-4">
                     <CardTitle className="text-xl font-heading line-clamp-2 group-hover:text-primary transition-colors">
                       <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                     </CardTitle>
-                    <p className="text-muted-foreground text-sm line-clamp-3">{post.excerpt}</p>
+                    <p className="text-muted-foreground text-sm line-clamp-3">
+                      {post.excerpt}
+                    </p>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex items-center justify-between text-sm text-muted-foreground">
@@ -104,7 +126,9 @@ export default async function BlogPage() {
                         </div>
                         <div className="flex items-center space-x-1">
                           <Calendar className="h-4 w-4" />
-                          <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
+                          <span>
+                            {new Date(post.publishedAt).toLocaleDateString()}
+                          </span>
                         </div>
                       </div>
                       <span>{post.readTime} min read</span>
@@ -142,7 +166,9 @@ export default async function BlogPage() {
             <div className="space-y-6">
               <Card className="border-border">
                 <CardHeader>
-                  <CardTitle className="text-lg font-heading">Categories</CardTitle>
+                  <CardTitle className="text-lg font-heading">
+                    Categories
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   {categories.map((category) => (
@@ -165,7 +191,9 @@ export default async function BlogPage() {
 
               <Card className="border-border">
                 <CardHeader>
-                  <CardTitle className="text-lg font-heading">Newsletter</CardTitle>
+                  <CardTitle className="text-lg font-heading">
+                    Newsletter
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">
@@ -182,13 +210,20 @@ export default async function BlogPage() {
             {/* Recent Posts */}
             <div className="lg:col-span-3">
               <div className="mb-8">
-                <h2 className="font-heading text-3xl font-bold text-foreground mb-4">Recent Articles</h2>
-                <p className="text-muted-foreground">Latest insights from our development team</p>
+                <h2 className="font-heading text-3xl font-bold text-foreground mb-4">
+                  Recent Articles
+                </h2>
+                <p className="text-muted-foreground">
+                  Latest insights from our development team
+                </p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {recentPosts.map((post) => (
-                  <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 border-border">
+                  <Card
+                    key={post.id}
+                    className="group hover:shadow-lg transition-all duration-300 border-border"
+                  >
                     <div className="aspect-[16/10] relative overflow-hidden rounded-t-lg">
                       <img
                         src={post.imageUrl || "/placeholder.svg"}
@@ -204,19 +239,27 @@ export default async function BlogPage() {
                       <CardTitle className="text-lg font-heading line-clamp-2 group-hover:text-primary transition-colors">
                         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                       </CardTitle>
-                      <p className="text-muted-foreground text-sm line-clamp-2">{post.excerpt}</p>
+                      <p className="text-muted-foreground text-sm line-clamp-2">
+                        {post.excerpt}
+                      </p>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="flex items-center justify-between text-xs text-muted-foreground">
                         <div className="flex items-center space-x-3">
                           <span>{post.author.name}</span>
-                          <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
+                          <span>
+                            {new Date(post.publishedAt).toLocaleDateString()}
+                          </span>
                         </div>
                         <span>{post.readTime} min read</span>
                       </div>
                       <div className="flex flex-wrap gap-1">
                         {post.tags.slice(0, 2).map((tag) => (
-                          <Badge key={tag} variant="outline" className="text-xs">
+                          <Badge
+                            key={tag}
+                            variant="outline"
+                            className="text-xs"
+                          >
                             {tag}
                           </Badge>
                         ))}
@@ -239,5 +282,5 @@ export default async function BlogPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

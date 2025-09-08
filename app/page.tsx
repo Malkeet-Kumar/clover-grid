@@ -10,6 +10,7 @@ import {
   Users,
   TrendingUp,
   LightbulbIcon,
+  SquareAsterisk,
 } from "lucide-react";
 import { getServices, getPortfolio } from "@/lib/api";
 import {
@@ -26,6 +27,9 @@ import { AnimatedCard } from "@/components/animated-card";
 import { AnimatedButton } from "@/components/animated-button";
 import { StaggerContainer, StaggerItem } from "@/components/stagger-container";
 import { PageTransition } from "@/components/page-transition";
+import WhyUs from "@/components/why-us";
+import React from "react";
+import { toast } from "@/components/ui/use-toast";
 
 const iconMap = {
   Code,
@@ -93,7 +97,7 @@ export default async function HomePage() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="text-lg px-10 py-4 border-2 border-secondary-200 hover:border-primary-300 hover:bg-primary-50 text-secondary-700 hover:text-primary-700"
+                  className="text-lg px-10 py-4 border border-primary hover:border-primary-foreground hover:bg-primary text-primary hover:text-primary-foreground"
                 >
                   <Link href="/portfolio">View Our Work</Link>
                 </AnimatedButton>
@@ -127,6 +131,7 @@ export default async function HomePage() {
             <div className="text-center mb-20">
               <div className="mb-4">
                 <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
+                  <SquareAsterisk className="mr-1 w-4 h-4" />
                   Our Services
                 </span>
               </div>
@@ -176,7 +181,7 @@ export default async function HomePage() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="border-2 border-secondary-300 hover:border-primary-400 text-secondary-700 hover:text-primary-600 hover:bg-primary-50"
+                className="border border-primary hover:border-primary text-primary hover:text-primary-foreground hover:bg-primary"
               >
                 <Link href="/services">
                   View All Services
@@ -192,10 +197,11 @@ export default async function HomePage() {
           <section className="py-24 bg-white">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-20">
-                <div className="mb-4">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-accent-emerald/10 text-accent-emerald text-sm font-medium">
-                    Portfolio
-                  </span>
+                <div className="mb-4">  
+                   <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
+                  <SquareAsterisk className="mr-1 w-4 h-4" />
+                  Portfolio
+                </span>
                 </div>
                 <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-6">
                   Featured Projects
@@ -210,12 +216,12 @@ export default async function HomePage() {
                 {featuredPortfolio.map((project, index) => (
                   <StaggerItem key={project.id}>
                     <AnimatedCard delay={index * 0.2}>
-                      <div className="group bg-white border border-secondary-200 hover:border-primary-300 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 hover:-translate-y-2">
+                      <div className="group bg-white border border-secondary-200 hover:border-primary-300 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 ">
                         <div className="aspect-[4/3] bg-gradient-to-br from-primary-100 to-accent-emerald/20 relative overflow-hidden">
                           <img
                             src={project.imageUrl || "/placeholder.svg"}
                             alt={project.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            className="w-full h-full object-contain transition-transform duration-500"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
@@ -288,252 +294,7 @@ export default async function HomePage() {
           </section>
         )}
 
-        {/* Why Choose Us - Redesigned with better visual hierarchy */}
-        <section className="py-24 bg-gradient-to-br from-secondary-50 via-primary-50/30 to-accent-emerald/10">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="mb-6">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
-                    Why Choose Us
-                  </span>
-                </div>
-
-                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-8">
-                  Your Success Is Our{" "}
-                  <span className="text-primary">Priority</span>
-                </h2>
-
-                <p className="text-xl text-secondary-600 mb-10 leading-relaxed">
-                  We combine technical expertise with business acumen to deliver
-                  solutions that drive measurable results and sustainable
-                  growth.
-                </p>
-
-                <StaggerContainer className="space-y-6">
-                  {[
-                    {
-                      text: "Expert team with 10+ years of experience",
-                      desc: "Senior developers and architects with proven track records",
-                    },
-                    {
-                      text: "Cutting-edge technologies and best practices",
-                      desc: "Always using the latest, most effective tools and methodologies",
-                    },
-                    {
-                      text: "Agile development methodology",
-                      desc: "Fast, iterative delivery with continuous client collaboration",
-                    },
-                    {
-                      text: "24/7 support and maintenance",
-                      desc: "Round-the-clock monitoring and rapid issue resolution",
-                    },
-                    {
-                      text: "Proven track record with 200+ successful projects",
-                      desc: "Consistently delivering projects on time and within budget",
-                    },
-                  ].map((item, index) => (
-                    <StaggerItem key={index}>
-                      <div className="flex items-start space-x-4 p-4 rounded-xl hover:bg-white/60 transition-colors duration-300">
-                        <div className="flex-shrink-0 w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center mt-1">
-                          <CheckCircle className="h-4 w-4 text-white" />
-                        </div>
-                        <div>
-                          <div className="text-foreground font-semibold text-lg mb-1">
-                            {item.text}
-                          </div>
-                          <div className="text-secondary-600 text-sm">
-                            {item.desc}
-                          </div>
-                        </div>
-                      </div>
-                    </StaggerItem>
-                  ))}
-                </StaggerContainer>
-
-                <div className="mt-12">
-                  <AnimatedButton
-                    size="lg"
-                    asChild
-                    className="bg-primary hover:bg-primary-600 shadow-lg shadow-primary-500/25"
-                  >
-                    <Link href="/about">
-                      Learn More About Us
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </AnimatedButton>
-                </div>
-              </div>
-
-              <AnimatedCard direction="right" delay={0.3}>
-                <div className="relative">
-                  {/* Stats cards */}
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-primary-600 mb-2">
-                        200+
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        Projects Completed
-                      </div>
-                    </div>
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-accent-emerald mb-2">
-                        95%
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        Client Retention
-                      </div>
-                    </div>
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-accent-teal mb-2">
-                        24/7
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        Support Available
-                      </div>
-                    </div>
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-accent-lime mb-2">
-                        5+
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        Years Experience
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Decorative elements */}
-                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary-200/30 rounded-full -z-10"></div>
-                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-emerald/20 rounded-full -z-10"></div>
-                </div>
-              </AnimatedCard>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-24 bg-gradient-to-br from-secondary-50 via-primary-50/30 to-accent-emerald/10">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="mb-6">
-                  <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 text-sm font-medium">
-                    Why Choose Us
-                  </span>
-                </div>
-
-                <h2 className="font-heading text-4xl lg:text-5xl font-bold text-foreground mb-8">
-                  Your Success Is Our{" "}
-                  <span className="text-primary">Top Priority</span>
-                </h2>
-
-                <p className="text-xl text-secondary-600 mb-10 leading-relaxed">
-                  We combine technical expertise with business insight to create
-                  solutions that help your business thrive. Our approach is
-                  centered on delivering measurable impact and long-term growth.
-                </p>
-
-                <StaggerContainer className="space-y-6">
-                  {[
-                    {
-                      text: "Experienced and collaborative team",
-                      desc: "Our developers and strategists bring practical know-how to every project",
-                    },
-                    {
-                      text: "Innovative technologies and best practices",
-                      desc: "We leverage modern tools and methodologies to build efficient, scalable solutions",
-                    },
-                    {
-                      text: "Agile and transparent workflows",
-                      desc: "Frequent updates and close collaboration ensure projects meet your goals",
-                    },
-                    {
-                      text: "Reliable support and guidance",
-                      desc: "We stay by your side to help with any challenges during and after delivery",
-                    },
-                    {
-                      text: "Proven approach to delivering results",
-                      desc: "We focus on quality, performance, and customer satisfaction throughout the process",
-                    },
-                  ].map((item, index) => (
-                    <StaggerItem key={index}>
-                      <div className="flex items-start space-x-4 p-4 rounded-xl hover:bg-white/60 transition-colors duration-300">
-                        <div className="flex-shrink-0 w-6 h-6 bg-primary-500 rounded-full flex items-center justify-center mt-1">
-                          <CheckCircle className="h-4 w-4 text-white" />
-                        </div>
-                        <div>
-                          <div className="text-foreground font-semibold text-lg mb-1">
-                            {item.text}
-                          </div>
-                          <div className="text-secondary-600 text-sm">
-                            {item.desc}
-                          </div>
-                        </div>
-                      </div>
-                    </StaggerItem>
-                  ))}
-                </StaggerContainer>
-
-                <div className="mt-12">
-                  <AnimatedButton
-                    size="lg"
-                    asChild
-                    className="bg-primary hover:bg-primary-600 shadow-lg shadow-primary-500/25"
-                  >
-                    <Link href="/about">
-                      Learn More About Us
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Link>
-                  </AnimatedButton>
-                </div>
-              </div>
-
-              <AnimatedCard direction="right" delay={0.3}>
-                <div className="relative">
-                  {/* Stats cards */}
-                  <div className="grid grid-cols-2 gap-6">
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-primary-600 mb-2">
-                        Trusted
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        By growing businesses
-                      </div>
-                    </div>
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-accent-emerald mb-2">
-                        High Quality
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        Solutions and service
-                      </div>
-                    </div>
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-accent-teal mb-2">
-                        Always Available
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        Support when you need it
-                      </div>
-                    </div>
-                    <div className="bg-white border border-secondary-200 rounded-2xl p-8 text-center shadow-lg">
-                      <div className="text-4xl font-bold text-accent-lime mb-2">
-                        Experienced
-                      </div>
-                      <div className="text-secondary-600 font-medium">
-                        Team delivering results
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Decorative elements */}
-                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary-200/30 rounded-full -z-10"></div>
-                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent-emerald/20 rounded-full -z-10"></div>
-                </div>
-              </AnimatedCard>
-            </div>
-          </div>
-        </section>
+        <WhyUs version={1} />
 
         {/* CTA Section - Enhanced with better contrast and visual appeal */}
         <section className="py-24 bg-gradient-to-br from-primary-600 to-accent-emerald relative overflow-hidden">
@@ -563,7 +324,7 @@ export default async function HomePage() {
                   size="lg"
                   variant="outline"
                   asChild
-                  className="text-lg px-10 py-4 border-2 border-white/30  hover:text-primary-600 text-primary-foreground hover:text-white transition-all duration-300"
+                  className="text-lg px-10 py-4 border border-primary-foreground hover:text-primary-600 text-primary-foreground hover:text-white transition-all duration-300"
                 >
                   <Link href="/quote">Get Free Quote</Link>
                 </AnimatedButton>

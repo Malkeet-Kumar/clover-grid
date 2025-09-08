@@ -5,11 +5,12 @@ import type {
   JobPost,
   PricePlan,
   Page,
-} from "./types";
+  IQuotation,
+} from "@/types";
 
 export const mockPages: Page[] = [
   {
-    id: "1",
+    _id: "1",
     name: "Home",
     title: "Transform Your Business with Cutting-Edge IT Solutions",
     content:
@@ -22,14 +23,14 @@ export const mockPages: Page[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
-    id: "2",
+    _id: "2",
     name: "About",
-    title: "About TechFlow Solutions",
+    title: "About CloverGrid",
     content:
       "We are a team of passionate developers and designers committed to delivering exceptional IT solutions.",
     slug: "about",
     metaDescription:
-      "Learn about TechFlow Solutions - our mission, vision, and expert team.",
+      "Learn about CloverGrid - our mission, vision, and expert team.",
     published: true,
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
@@ -38,10 +39,10 @@ export const mockPages: Page[] = [
 
 export const mockServices: Service[] = [
   {
-    id: "1",
+    _id: "1",
     title: "Web Development",
     description:
-      "Modern, responsive web applications built cutting-edge technologies.",
+      "Modern, responsive web apps built with cutting-edge technologies.",
     icon: "Code",
     features: [
       "Responsive Design",
@@ -57,10 +58,9 @@ export const mockServices: Service[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
-    id: "2",
+    _id: "2",
     title: "App Development",
-    description:
-      "Native and cross-platform mobile applications for iOS and Android.",
+    description: "Native and cross-platform mobile apps for iOS and Android.",
     icon: "Smartphone",
     features: [
       "Cross-platform",
@@ -76,10 +76,9 @@ export const mockServices: Service[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
-    id: "3",
+    _id: "3",
     title: "Cloud Solutions",
-    description:
-      "Scalable cloud infrastructure and DevOps solutions on AWS and other platforms.",
+    description: "Scalable cloud infrastructure and DevOps solutions.",
     icon: "Cloud",
     features: [
       "Auto Scaling",
@@ -95,7 +94,7 @@ export const mockServices: Service[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
-    id: "4",
+    _id: "4",
     title: "AI & Automation",
     description:
       "Intelligent chatbots, AI integrations, and business process automation.",
@@ -117,7 +116,7 @@ export const mockServices: Service[] = [
 
 export const mockPortfolio: Portfolio[] = [
   {
-    id: "1",
+    _id: "1",
     title: "SDL Logistics Management System",
     description: "End-to-end logistics management solution",
     longDescription:
@@ -130,7 +129,9 @@ export const mockPortfolio: Portfolio[] = [
       "Tailwind CSS",
       "Socket.IO",
     ],
-    imageUrl: "/sdl-report.jpg",
+    // imageUrl: "/sdl-report.jpg",
+    imageUrl:
+      "https://ui-lib.com/blog/wp-content/uploads/2021/09/matx-github.png",
     projectUrl: "https://safedispatchlogistics.com",
     category: "web",
     client: "SDL Operations",
@@ -146,13 +147,14 @@ export const mockPortfolio: Portfolio[] = [
     updatedAt: "2025-01-01T00:00:00Z",
   },
   {
-    id: "2",
+    _id: "2",
     title: "Healthcare Management System",
     description: "Comprehensive healthcare management solution",
     longDescription:
       "A HIPAA-compliant healthcare management system with patient records, appointment scheduling, and telemedicine capabilities.",
     techStack: ["React", "Node.js", "MongoDB", "Socket.io", "AWS"],
-    imageUrl: "/placeholder.svg?height=400&width=600",
+    imageUrl:
+      "https://flatlogic.com/blog/wp-content/uploads/2021/06/berry-bestofreact.jpeg",
     category: "saas",
     client: "MedTech Solutions",
     duration: "6 months",
@@ -166,11 +168,33 @@ export const mockPortfolio: Portfolio[] = [
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
   },
+  {
+    _id: "2",
+    title: "Healthcare Management System",
+    description: "Comprehensive healthcare management solution",
+    longDescription:
+      "A HIPAA-compliant healthcare management system with patient records, appointment scheduling, and telemedicine capabilities.",
+    techStack: ["React", "Node.js", "MongoDB", "Socket.io", "AWS"],
+    imageUrl:
+      "https://img.freepik.com/free-vector/smart-home-management-smartphone-app-template_23-2148627917.jpg?semt=ais_hybrid&w=740&q=80",
+    category: "saas",
+    client: "MedTech Solutions",
+    duration: "6 months",
+    results: [
+      { metric: "Patient Satisfaction", value: "95%" },
+      { metric: "Processing Time", value: "-70%" },
+      { metric: "Cost Reduction", value: "40%" },
+    ],
+    featured: false,
+    published: true,
+    createdAt: "2024-01-01T00:00:00Z",
+    updatedAt: "2024-01-01T00:00:00Z",
+  },
 ];
 
 export const mockBlogPosts: BlogPost[] = [
   {
-    id: "1",
+    _id: "1",
     title: "The Future of Web Development in 2024",
     slug: "future-web-development-2024",
     excerpt:
@@ -193,7 +217,7 @@ export const mockBlogPosts: BlogPost[] = [
     updatedAt: "2024-01-15T00:00:00Z",
   },
   {
-    id: "2",
+    _id: "2",
     title: "Building Scalable Mobile Apps with React Native",
     slug: "scalable-mobile-apps-react-native",
     excerpt:
@@ -219,7 +243,7 @@ export const mockBlogPosts: BlogPost[] = [
 
 export const mockJobPosts: JobPost[] = [
   {
-    id: "1",
+    _id: "1",
     title: "Senior Full Stack Developer",
     department: "Engineering",
     location: "Remote / San Francisco",
@@ -255,7 +279,7 @@ export const mockJobPosts: JobPost[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
-    id: "2",
+    _id: "2",
     title: "UI/UX Designer",
     department: "Design",
     location: "New York / Remote",
@@ -293,7 +317,7 @@ export const mockJobPosts: JobPost[] = [
 
 export const mockPricePlans: PricePlan[] = [
   {
-    id: "1",
+    _id: "1",
     name: "Starter Website",
     description: "Perfect for small businesses and startups",
     price: 2500,
@@ -317,7 +341,7 @@ export const mockPricePlans: PricePlan[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
-    id: "2",
+    _id: "2",
     name: "Professional Website",
     description: "Ideal for growing businesses",
     price: 5000,
@@ -341,7 +365,7 @@ export const mockPricePlans: PricePlan[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
   {
-    id: "3",
+    _id: "3",
     name: "Enterprise Solution",
     description: "For large organizations with complex needs",
     price: 15000,
@@ -365,3 +389,82 @@ export const mockPricePlans: PricePlan[] = [
     updatedAt: "2024-01-01T00:00:00Z",
   },
 ];
+
+export const quotationData: IQuotation = {
+  title: "Quotation",
+  developer: {
+    name: "Kajal Chandail",
+    role: "MERN Stack Developer",
+    location: "Ambala, Haryana",
+    email: "Chandailkajal9@gmail.com",
+    phone: "+91-8295994118",
+  },
+  client: {
+    name: "Mr. Ranjan Gupta",
+  },
+  overview: [
+    "This quotation outlines the development of a plug-and-play real-time chat application module built using the MERN stack (MongoDB, Express.js, React, Node.js). The module will support 1-to-1 messaging and multi-user communication through channels. It will also include media sharing, audio/video calling, and a modular admin interface.",
+    "The frontend will be developed with React using HashRouter to ensure smooth integration into your existing PHP-based system. The backend services will be independently deployable, using Node.js and MongoDB, and will support real-time communication via Socket.IO and calling via WebRTC.",
+    "The UI/UX will be built using modern responsive design practices. If the client provides wireframes or design references, they will be followed during development. Otherwise, a standard chat interface layout will be implemented by the developer based on common design conventions. Minor styling adjustments can be accommodated during development.",
+  ],
+  scope: [
+    "1-to-1 and channel-based real-time chat using Socket.IO",
+    "Media sharing (images, videos, documents)",
+    "Audio & video calling (WebRTC-based)",
+    "Authentication and user management",
+    "React frontend with HashRouter for PHP compatibility",
+    "Node.js backend API with MongoDB",
+    "Basic admin panel to manage users and channels",
+    "Deployment and documentation support",
+  ],
+  phases: [
+    {
+      title: "Phase 1",
+      description:
+        "Backend setup, user authentication, API development, and Socket.IO integration for real-time messaging",
+      duration: "2 weeks",
+      cost: "₹12,000",
+    },
+    {
+      title: "Phase 2",
+      description:
+        "Media uploads and WebRTC integration for audio/video calling",
+      duration: "4 weeks",
+      cost: "₹25,000",
+    },
+    {
+      title: "Phase 3",
+      description:
+        "React frontend development, PHP integration, admin panel, testing, and deployment support",
+      duration: "2–3 weeks",
+      cost: "₹14,000",
+    },
+  ],
+  totalEstimate: "₹51,000 INR",
+  paymentTerms: [
+    {
+      phase: "Phase 1",
+      amount: "₹12,000",
+      note: "Payable after project start",
+    },
+    {
+      phase: "Phase 2",
+      amount: "₹25,000",
+      note: "Payable upon completion of media and calling integration",
+    },
+    {
+      phase: "Phase 3",
+      amount: "₹14,000",
+      note: "Payable upon final delivery and deployment",
+    },
+  ],
+  notes: [
+    "Estimated project duration: 8–9 weeks (some phases may run in parallel)",
+    "Includes 2 weeks of post-delivery support for minor issues and bug fixes",
+    "Hosting, domain, and paid third-party services (e.g., Twilio, Agora) are not included",
+    "Client should provide access to PHP system for integration testing if needed",
+    "UI/UX Design: If the client provides wireframes or design references, the UI will follow those. Otherwise, standard layout and design will be implemented based on common chat interface practices. Separate wireframing is not included unless explicitly requested.",
+    "Audio/Video Calls: Implementation may require STUN/TURN servers. Free STUN servers (e.g., Google) will be used. For TURN (required for full reliability), a third-party service or self-hosted Coturn server may be necessary.",
+  ],
+  footerNote: "Thank you for considering this proposal.\n— Kajal Chandail",
+};

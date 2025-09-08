@@ -1,17 +1,15 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
 export interface Service extends Document {
   id: string;
   title: string;
   description: string;
   icon: string;
-  features: { type: string[]; default: [] };
-  technologies: { type: string[]; default: [] };
+  features: string[];
+  technologies: string[];
   pricing: {
-    type: {
-      starting: number;
-      currency: string;
-    };
+    starting: number;
+    currency: string;
   };
   category: "web" | "mobile" | "cloud" | "ai" | "design" | "saas" | "support";
   published: boolean;
@@ -24,7 +22,7 @@ const PricingSchema = new Schema({
   currency: { type: String, required: true },
 });
 
-const ServiceSchema = new Schema<Service>(
+const ServiceSchema: Schema<Service> = new Schema(
   {
     id: { type: String, required: true, unique: true },
     title: { type: String, required: true },

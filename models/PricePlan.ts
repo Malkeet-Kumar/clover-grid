@@ -7,8 +7,8 @@ export interface PricePlan extends Document {
   price: number;
   currency: string;
   billing: "monthly" | "yearly" | "one-time";
-  features: { type: string[] };
-  limitations?: { type: string[] };
+  features: string[];
+  limitations?: string[];
   popular: boolean;
   ctaText: string;
   ctaUrl: string;
@@ -18,7 +18,7 @@ export interface PricePlan extends Document {
   updatedAt: string;
 }
 
-const PricePlanSchema = new Schema<PricePlan>(
+const PricePlanSchema: Schema<PricePlan> = new Schema(
   {
     id: { type: String, required: true, unique: true },
     name: { type: String, required: true },

@@ -1,18 +1,18 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
 export interface Portfolio extends Document {
   id: string;
   title: string;
   description: string;
   longDescription: string;
-  techStack: { type: string[] };
+  techStack: string[];
   imageUrl: string;
   projectUrl?: string;
   githubUrl?: string;
   category: "web" | "mobile" | "saas" | "ai" | "ecommerce";
   client: string;
   duration: string;
-  results: { type: { metric: string; value: string }[] };
+  results: { metric: string; value: string }[];
   featured: boolean;
   published: boolean;
   createdAt: string;
@@ -24,7 +24,7 @@ const ResultSchema = new Schema({
   value: { type: String, required: true },
 });
 
-const PortfolioSchema = new Schema<Portfolio>(
+const PortfolioSchema: Schema<Portfolio> = new Schema(
   {
     id: { type: String, required: true, unique: true },
     title: { type: String, required: true },

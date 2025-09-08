@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
 export interface BlogPost extends Document {
   id: string;
@@ -7,8 +7,8 @@ export interface BlogPost extends Document {
   excerpt: string;
   content: string;
   imageUrl: string;
-  author: { type: { name: string; avatar: string; bio: string } };
-  tags: { type: string[] };
+  author: { name: string; avatar: string; bio: string };
+  tags: string[];
   category: string;
   readTime: number;
   published: boolean;
@@ -24,7 +24,7 @@ const AuthorSchema = new Schema({
   bio: { type: String, required: true },
 });
 
-const BlogPostSchema = new Schema<BlogPost>(
+const BlogPostSchema: Schema<BlogPost> = new Schema(
   {
     id: { type: String, required: true, unique: true },
     title: { type: String, required: true },

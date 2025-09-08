@@ -1,34 +1,32 @@
-import { Schema, model, Document } from "mongoose";
+import mongoose, { Schema, model, Document } from "mongoose";
 
 export interface JobPost extends Document {
-  id: string;
   title: string;
   department: string;
   location: string;
   type: "full-time" | "part-time" | "contract" | "remote";
   description: string;
-  requirements: { type: string[] };
-  responsibilities: { type: string[] };
-  skills: { type: string[] };
+  requirements: string[];
+  responsibilities: string[];
+  skills: string[];
   experience: string;
   salary?: { min: number; max: number; currency: string };
-  benefits: { type: string[] };
+  benefits: string[];
   applyUrl: string;
   published: boolean;
   featured: boolean;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const SalarySchema = new Schema({
-  min: { type: Number },
-  max: { type: Number },
-  currency: { type: String },
+  min: { type: Number, required: true },
+  max: { type: Number, required: true },
+  currency: { type: String, required: true },
 });
 
-const JobPostSchema = new Schema<JobPost>(
+const JobPostSchema: Schema<JobPost> = new Schema(
   {
-    id: { type: String, required: true, unique: true },
     title: { type: String, required: true },
     department: { type: String, required: true },
     location: { type: String, required: true },
@@ -51,4 +49,4 @@ const JobPostSchema = new Schema<JobPost>(
   { timestamps: true }
 );
 
-export const JobPostModel = model<JobPost>("JobPost", JobPostSchema);
+export const JobPostModel = mongoose.models.JobPost || model<JobPost>("JobPost", JobPostSchema);

@@ -1,5 +1,5 @@
 import { Document, Model } from "mongoose";
-import { ApiResponse } from "./types";
+import { ApiResponse } from "@/types";
 
 interface PaginateOptions {
   page?: number;
