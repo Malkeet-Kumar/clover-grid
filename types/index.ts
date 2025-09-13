@@ -96,14 +96,14 @@ export interface JobPost {
 }
 
 export interface PricePlan {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   price: number;
-  currency: string;
+  currency: "USD" | "INR" | "JPY";
   billing: "monthly" | "yearly" | "one-time";
   features: string[];
-  limitations?: string[];
+  limitations: string[];
   popular: boolean;
   ctaText: string;
   ctaUrl: string;
@@ -137,6 +137,7 @@ export type HookState = {
 export type HookConfig = {
   queryParams?: Record<string, string | number>;
   formData?: boolean;
+  headers: {};
 };
 
 export type TSideBarState = "full" | "compact" | "hidden";

@@ -69,7 +69,6 @@ class AuthStore {
           this.user = parsed.user || { ...initUser };
           this.permissions = parsed.permissions || {};
           this.isAuthenticated = parsed.isAuthenticated || false;
-          this.isOtpSent = parsed.isOtpSent || false;
           this.authState = parsed.authState || {
             isLoading: false,
             isSuccess: false,
@@ -115,37 +114,6 @@ class AuthStore {
       }
     } catch (error: unknown) {
       this.resetWithError((error as Error).message || "Login failed!");
-    } finally {
-      runInAction(() => {
-        this.authState.isLoading = false;
-      });
-    }
-  }
-
-  async verifyOtp({ otp }: { otp: string | number }) {
-    runInAction(() => {
-      this.authState = { isError: false, isSuccess: false, isLoading: true };
-    });
-
-    try {
-      const res = await fetch(constants.api.VERIFY_OTP, {
-        credentials: "include",
-        method: "POST",
-        body: JSON.stringify({ otp }),
-      });
-      const json = await res.json();
-      if (res.status === 200 && json.success) {
-        runInAction(() => {
-          this.authState.isSuccess = json.message || "Logged in successfully";
-          this.user = { ...json.data.user };
-          this.permissions = { ...json.data.permissions };
-          this.isAuthenticated = true;
-        });
-      } else {
-        this.resetWithError(json.error || "OTP verification failed!");
-      }
-    } catch (error: unknown) {
-      this.resetWithError((error as Error).message || "Error occurred!");
     } finally {
       runInAction(() => {
         this.authState.isLoading = false;

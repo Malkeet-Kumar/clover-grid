@@ -1,11 +1,11 @@
 import type {
-  Service,
-  Portfolio,
   BlogPost,
-  JobPost,
-  PricePlan,
-  Page,
   IQuotation,
+  JobPost,
+  Page,
+  Portfolio,
+  PricePlan,
+  Service,
 } from "@/types";
 
 export const mockPages: Page[] = [
@@ -25,15 +25,40 @@ export const mockPages: Page[] = [
   {
     _id: "2",
     name: "About",
-    title: "About CloverGrid",
+    title: "About SARU CODER",
     content:
       "We are a team of passionate developers and designers committed to delivering exceptional IT solutions.",
     slug: "about",
     metaDescription:
-      "Learn about CloverGrid - our mission, vision, and expert team.",
+      "Learn about SARU CODER - our mission, vision, and expert team.",
     published: true,
     createdAt: "2024-01-01T00:00:00Z",
     updatedAt: "2024-01-01T00:00:00Z",
+  },
+];
+
+export const teamMembers = [
+  {
+    name: "Karan Kumar",
+    role: "CEO & Founder",
+    image:
+      "https://media.licdn.com/dms/image/v2/D5603AQGAn61KfRCk8g/profile-displayphoto-crop_800_800/B56Zk0gXjzI4AI-/0/1757522526633?e=1760572800&v=beta&t=ylvsD6MfCrGNqieGApEeqE5QYVQrgQ2DrZArRZYi9Ho",
+    bio: "Experienced tech leader with a background as a Google developer, now focused on helping startups build and scale.",
+    expertise: ["Strategic Planning", "Team Leadership", "Product Vision"],
+  },
+  {
+    name: "Michael Chen",
+    role: "CTO",
+    image: "/placeholder.svg?height=300&width=300",
+    bio: "Full-stack architect with deep expertise in cloud infrastructure and AI systems.",
+    expertise: ["Cloud Architecture", "AI/ML", "System Design"],
+  },
+  {
+    name: "Kajal Chandail",
+    role: "Head of Design",
+    image: "/placeholder.svg?height=300&width=300",
+    bio: "Award-winning designer with 8+ years creating user-centered digital experiences.",
+    expertise: ["UX/UI Design", "Design Systems", "User Research"],
   },
 ];
 
@@ -356,6 +381,7 @@ export const mockPricePlans: PricePlan[] = [
       "E-commerce Ready",
       "6 Months Support",
     ],
+    limitations: [],
     popular: true,
     ctaText: "Most Popular",
     ctaUrl: "/quote?plan=professional",
@@ -380,6 +406,7 @@ export const mockPricePlans: PricePlan[] = [
       "Training & Documentation",
       "12 Months Support",
     ],
+    limitations: [],
     popular: false,
     ctaText: "Contact Sales",
     ctaUrl: "/contact?plan=enterprise",

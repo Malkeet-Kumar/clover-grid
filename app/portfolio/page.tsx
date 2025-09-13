@@ -1,19 +1,19 @@
-import { Navigation } from "@/components/navigation";
+import { AnimatedCard } from "@/components/animated-card";
 import { Footer } from "@/components/footer";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Navigation } from "@/components/navigation";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getPortfolio } from "@/lib/api";
 import {
+  ArrowRight,
+  Clock,
+  DollarSign,
   ExternalLink,
   TrendingUp,
   Users,
-  DollarSign,
-  Clock,
-  ArrowRight,
 } from "lucide-react";
-import { getPortfolio } from "@/lib/api";
-import { AnimatedCard } from "@/components/animated-card";
+import Link from "next/link";
 
 const iconMap = {
   TrendingUp,
@@ -51,7 +51,7 @@ export default async function PortfolioPage() {
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
               About{" "}
               <span className="text-primary bg-gradient-to-r from-primary-600 to-accent-emerald bg-clip-text text-transparent">
-                CloverGrid
+                SARU CODER
               </span>
             </h1>
 

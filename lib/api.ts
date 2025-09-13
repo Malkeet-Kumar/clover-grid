@@ -45,7 +45,7 @@ export async function fetchApi<T>(
 
   const response = await fetch(url, {
     method,
-    headers,
+    headers: { ...headers, ...config?.headers },
     body: method === "GET" ? undefined : requestBody,
     next: { revalidate: 0 },
   });
@@ -62,7 +62,12 @@ export async function getServices(category?: string): Promise<Service[]> {
   if (category) params.append("category", category);
   params.append("published", "true");
 
-  const response = await fetchApi<Service[]>(`/services?${params.toString()}`);
+  const response = await fetchApi<Service[]>(
+    `/services?${params.toString()}`,
+    "GET",
+    undefined,
+    { headers: { "x-internal-request": "true" } }
+  );
   return response.data;
 }
 
@@ -78,7 +83,10 @@ export async function getPortfolio(options?: {
   if (options?.limit) params.append("limit", options.limit.toString());
 
   const response = await fetchApi<Portfolio[]>(
-    `/portfolio?${params.toString()}`
+    `/portfolio?${params.toString()}`,
+    "GET",
+    undefined,
+    { headers: { "x-internal-request": "true" } }
   );
   return response.data;
 }
@@ -96,7 +104,12 @@ export async function getBlogPosts(options?: {
   if (options?.limit) params.append("limit", options.limit.toString());
   if (options?.page) params.append("page", options.page.toString());
 
-  const response = await fetchApi<BlogPost[]>(`/blog?${params.toString()}`);
+  const response = await fetchApi<BlogPost[]>(
+    `/blog?${params.toString()}`,
+    "GET",
+    undefined,
+    { headers: { "x-internal-request": "true" } }
+  );
   return { posts: response.data, pagination: response.pagination };
 }
 
@@ -111,7 +124,12 @@ export async function getJobPosts(options?: {
   if (options?.featured !== undefined)
     params.append("featured", options.featured.toString());
 
-  const response = await fetchApi<JobPost[]>(`/jobs?${params.toString()}`);
+  const response = await fetchApi<JobPost[]>(
+    `/jobs?${params.toString()}`,
+    "GET",
+    undefined,
+    { headers: { "x-internal-request": "true" } }
+  );
   return response.data;
 }
 
@@ -119,6 +137,32 @@ export async function getPricingPlans(category?: string): Promise<PricePlan[]> {
   const params = new URLSearchParams();
   if (category) params.append("category", category);
 
-  const response = await fetchApi<PricePlan[]>(`/pricing?${params.toString()}`);
+  const response = await fetchApi<PricePlan[]>(
+    `/pricing?${params.toString()}`,
+    "GET",
+    undefined,
+    { headers: { "x-internal-request": "true" } }
+  );
+  return response.data;
+}
+
+type Team = {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+  expertise: string[];
+};
+
+export async function getTeamMembers(isFeatured: boolean): Promise<Team[]> {
+  const params = new URLSearchParams();
+  if (isFeatured) params.append("featured", "true");
+
+  const response = await fetchApi<Team[]>(
+    `/teams?${params.toString()}`,
+    "GET",
+    undefined,
+    { headers: { "x-internal-request": "true" } }
+  );
   return response.data;
 }

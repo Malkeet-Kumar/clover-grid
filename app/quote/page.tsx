@@ -2,14 +2,14 @@
 
 import type React from "react";
 
-import { useState } from "react";
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -17,10 +17,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Send, Calculator, Clock, Users, Zap, TextQuote } from "lucide-react";
+import { Calculator, Clock, Send, TextQuote, Users, Zap } from "lucide-react";
+import { useState } from "react";
 
 const projectTypes = [
   "Web Application",
@@ -618,7 +618,7 @@ export default function QuotePage() {
                       className="w-full justify-start bg-transparent border border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                       asChild
                     >
-                      <a href="mailto:hello@clovergrid.dev">
+                      <a href="mailto:hello@sarucoder.dev">
                         <Send className="mr-2 h-4 w-4" />
                         Email Us
                       </a>

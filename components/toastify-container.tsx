@@ -3,5 +3,5 @@
 import { ToastContainer, Bounce } from "react-toastify";
 
 export const ToastifyContainer = () => {
-  return <ToastContainer transition={Bounce} />;
+  return <ToastContainer stacked limit={5} transition={Bounce} />;
 };

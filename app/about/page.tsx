@@ -9,6 +9,7 @@ import {
   Globe,
   Heart,
   Lightbulb,
+  ZapIcon as LightningBoltIcon,
   Rocket,
   RocketIcon,
   Shield,
@@ -17,41 +18,10 @@ import {
   ThumbsUpIcon,
   Users,
   UsersIcon,
-  ZapIcon as LightningBoltIcon,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
-
-const teamMembers = [
-  {
-    name: "Sarah Johnson",
-    role: "CEO & Founder",
-    image: "/placeholder.svg?height=300&width=300",
-    bio: "10+ years in tech leadership, former Google engineer with expertise in scaling startups.",
-    expertise: ["Strategic Planning", "Team Leadership", "Product Vision"],
-  },
-  {
-    name: "Michael Chen",
-    role: "CTO",
-    image: "/placeholder.svg?height=300&width=300",
-    bio: "Full-stack architect with deep expertise in cloud infrastructure and AI systems.",
-    expertise: ["Cloud Architecture", "AI/ML", "System Design"],
-  },
-  {
-    name: "Emily Rodriguez",
-    role: "Head of Design",
-    image: "/placeholder.svg?height=300&width=300",
-    bio: "Award-winning designer with 8+ years creating user-centered digital experiences.",
-    expertise: ["UX/UI Design", "Design Systems", "User Research"],
-  },
-  {
-    name: "David Kim",
-    role: "Lead Developer",
-    image: "/placeholder.svg?height=300&width=300",
-    bio: "Senior developer specializing in React, Node.js, and modern web technologies.",
-    expertise: ["Full-Stack Development", "DevOps", "Code Architecture"],
-  },
-];
+import { getTeamMembers, teamMembers } from "@/lib";
 
 const values = [
   {
@@ -118,7 +88,8 @@ const achievements = [
   },
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const teamMembers = await getTeamMembers(true);
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -144,7 +115,7 @@ export default function AboutPage() {
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
               About{" "}
               <span className="text-primary bg-gradient-to-r from-primary-600 to-accent-emerald bg-clip-text text-transparent">
-                CloverGrid
+                SARU CODER
               </span>
             </h1>
 
@@ -353,7 +324,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
+            {teamMembers.map((member, index: number) => (
               <div
                 key={index}
                 className="group relative bg-white border border-secondary-200 hover:border-primary-300 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 hover:-translate-y-2"
@@ -386,14 +357,16 @@ export default function AboutPage() {
 
                   {/* Expertise tags */}
                   <div className="flex flex-wrap gap-2 justify-center">
-                    {member.expertise.map((skill, skillIndex) => (
-                      <span
-                        key={skillIndex}
-                        className="px-3 py-1 bg-primary-100 text-primary-700 text-xs rounded-full font-medium"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                    {member.expertise.map(
+                      (skill: string, skillIndex: number) => (
+                        <span
+                          key={skillIndex}
+                          className="px-3 py-1 bg-primary-100 text-primary-700 text-xs rounded-full font-medium"
+                        >
+                          {skill}
+                        </span>
+                      )
+                    )}
                   </div>
                 </div>
               </div>

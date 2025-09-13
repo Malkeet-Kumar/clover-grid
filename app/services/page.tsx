@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import {
@@ -78,18 +78,29 @@ export default async function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {services.map((service, index) => {
               const IconComponent =
-                iconMap[service.icon as keyof typeof iconMap] || Code;
+                iconMap[service.icon as keyof typeof iconMap];
+
+              const isUrl =
+                service.icon.startsWith("http://") ||
+                service.icon.startsWith("https://");
               return (
                 <AnimatedCard
                   delay={index * 0.3}
-                  key={service.id}
+                  key={service._id}
                   className="group relative bg-white border border-secondary-200 hover:border-primary-300 rounded-3xl p-10 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 hover:-translate-y-1"
                 >
                   <CardHeader className="pb-4">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center space-x-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                          <IconComponent className="h-6 w-6 text-primary" />
+                          {isUrl ? (
+                            <img
+                              src={service.icon}
+                              className="h-6 w-6 object-cover"
+                            />
+                          ) : (
+                            <IconComponent className="h-6 w-6 text-primary" />
+                          )}
                         </div>
                         <div>
                           <CardTitle className="text-xl font-heading">

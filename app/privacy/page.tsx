@@ -1,5 +1,5 @@
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation";
 import { EarthLock } from "lucide-react";
 
 export default function PrivacyPage() {
@@ -61,7 +61,7 @@ export default function PrivacyPage() {
               <h2>Contact Us</h2>
               <p>
                 If you have any questions about this Privacy Policy, please
-                contact us at privacy@clovergrid.dev.
+                contact us at privacy@sarucoder.dev.
               </p>
             </div>
           </div>

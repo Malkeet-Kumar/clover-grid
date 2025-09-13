@@ -149,7 +149,7 @@ export default async function HomePage() {
                 const IconComponent =
                   iconMap[service.icon as keyof typeof iconMap] || Code;
                 return (
-                  <StaggerItem key={service.id}>
+                  <StaggerItem key={service._id}>
                     <AnimatedCard delay={index * 0.3}>
                       <div className="group relative bg-white border border-secondary-200 hover:border-primary-300 rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 hover:-translate-y-1">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-accent-emerald/0 group-hover:from-primary-50/50 group-hover:to-accent-emerald/20 rounded-2xl transition-all duration-300" />
@@ -214,7 +214,7 @@ export default async function HomePage() {
 
               <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 {featuredPortfolio.map((project, index) => (
-                  <StaggerItem key={project.id}>
+                  <StaggerItem key={project._id}>
                     <AnimatedCard delay={index * 0.2}>
                       <div className="group bg-white border border-secondary-200 hover:border-primary-300 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 ">
                         <div className="aspect-[4/3] bg-gradient-to-br from-primary-100 to-accent-emerald/20 relative overflow-hidden">

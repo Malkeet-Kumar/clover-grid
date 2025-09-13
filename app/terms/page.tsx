@@ -1,5 +1,5 @@
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation";
 import { Handshake } from "lucide-react";
 
 export default function TermsPage() {
@@ -48,15 +48,14 @@ export default function TermsPage() {
 
               <h2>Limitations</h2>
               <p>
-                In no event shall CloverGrid or its suppliers be liable
-                for any damages arising out of the use or inability to use our
-                services.
+                In no event shall SARU CODER or its suppliers be liable for any
+                damages arising out of the use or inability to use our services.
               </p>
 
               <h2>Contact Information</h2>
               <p>
                 If you have any questions about these Terms of Service, please
-                contact us at legal@clovergrid.dev.
+                contact us at legal@sarucoder.dev.
               </p>
             </div>
           </div>

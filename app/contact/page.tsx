@@ -2,14 +2,12 @@
 
 import type React from "react";
 
-import { useState } from "react";
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { Navigation } from "@/components/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -17,19 +15,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import {
-  Mail,
-  Phone,
-  MapPin,
   Clock,
-  Send,
-  MessageSquare,
-  Users,
-  Headphones,
   Contact,
+  Headphones,
+  Mail,
+  MapPin,
+  MessageSquare,
+  Phone,
+  Send,
+  Users,
 } from "lucide-react";
-import Link from "next/link";
+import { useState } from "react";
 
 const serviceTypes = [
   "Web Development",
@@ -264,7 +263,7 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium text-foreground">Email</p>
                       <p className="text-muted-foreground">
-                        hello@clovergrid.dev
+                        hello@sarucoder.dev
                       </p>
                     </div>
                   </div>
@@ -319,7 +318,7 @@ export default function ContactPage() {
                     className="w-full justify-start border border-primary text-primary"
                     asChild
                   >
-                    <a href="mailto:hello@clovergrid.dev">
+                    <a href="mailto:hello@sarucoder.dev">
                       <Mail className="mr-2 h-4 w-4" />
                       Send Email
                     </a>
@@ -392,9 +391,7 @@ export default function ContactPage() {
             <h2 className="font-heading text-3xl font-bold text-foreground mb-4">
               Visit Our Office
             </h2>
-            <p className="text-lg text-muted-foreground">
-    
-            </p>
+            <p className="text-lg text-muted-foreground"></p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -407,7 +404,7 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="CloverGrid Office Location"
+                title="SARU CODER Office Location"
               />
             </div>
           </div>

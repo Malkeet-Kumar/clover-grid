@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import { mockPricePlans } from "@/lib/mock-data"
-import type { ApiResponse, PricePlan } from "@/lib/types"
+import type { ApiResponse, PricePlan } from "@/types"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)

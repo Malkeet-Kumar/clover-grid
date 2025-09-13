@@ -1,4 +1,5 @@
 "use client";
+import ProtectedGuard from "@/components/auth-guard";
 import Sidebar from "@/components/sidebar";
 import { useStore } from "@/hooks";
 import { BriefcaseBusiness, Home, LayoutDashboard } from "lucide-react";
@@ -39,27 +40,30 @@ const AdminLayout = ({ children }: any) => {
       auth: ["Admin"],
     },
   ];
+
   return (
     <>
-      <div className="flex h-screen">
-        <div>
-          <Sidebar
-            isMobile={store.ui.isMobile}
-            navigation={navigations}
-            sidebarMode={store.ui.sidebarMode}
-            title="CloverGrid"
-            user={{
-              name: "Admin",
-              role: "Admin",
-              avatar: "",
-            }}
-            logoUrl={"/logo_emblem.png"}
-            onLogout={() => {}}
-            setSidebarMode={(mode) => store.ui.setSidebar(mode)}
-          />
+      <ProtectedGuard>
+        <div className="flex h-screen">
+          <div>
+            <Sidebar
+              isMobile={store.ui.isMobile}
+              navigation={navigations}
+              sidebarMode={store.ui.sidebarMode}
+              title="SARU CODER"
+              user={{
+                name: "Admin",
+                role: "Admin",
+                avatar: "",
+              }}
+              logoUrl={"/emblem.svg"}
+              onLogout={() => {}}
+              setSidebarMode={(mode) => store.ui.setSidebar(mode)}
+            />
+          </div>
+          <div className="flex-1">{children}</div>
         </div>
-        <div className="flex-1">{children}</div>
-      </div>
+      </ProtectedGuard>
     </>
   );
 };
